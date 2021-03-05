@@ -15,7 +15,7 @@ Vue.config.productionTip = false;
 
 const getHeaders = () => {
   const headers = {};
-  const token = "fb37b08842efae8902a0406a6af54e7991513fba";
+  const token = "60e8e7f765a8abb32a3a6e579d459cc93bf171f2";
   if (token) {
     headers.authorization = `Bearer ${token}`;
   }
@@ -28,7 +28,7 @@ const link = new HttpLink({
   fetch,
   headers: getHeaders()
 });
-const client = new ApolloClient({
+export const defaultClient = new ApolloClient({
   link: link,
   cache: new InMemoryCache({
     addTypename: true
@@ -36,7 +36,7 @@ const client = new ApolloClient({
 });
 
 const apolloProvider = new VueApollo({
-  defaultClient: client,
+  defaultClient
 })
 
 new Vue({
