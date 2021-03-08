@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="container">
+    <SearchBar @termChange="onTermChange"></SearchBar>
+    <div class="row">
+      <RepoList :repos="repos" @repoSelect="onRepoSelect"></RepoList>
+      <RepoDetails :repo="selectedRepo"></RepoDetails>
     </div>
     <router-view />
   </div>
+
 </template>
 
+<script>
+import SearchBar from "@/components/SearchBar.vue";
+import RepoList from "@/components/RepoList";
+import RepoDetails from "@/components/RepoDetails";
+
+import {mapGetters} from "vuex";
+
+export default {
+  name: "App",
+  components: {RepoList, SearchBar ,RepoDetails},
+
+  data() {
+    return {
+      selectedRepo:null,
+    };
+  },
+  created() {
+    this.handleGetRepositories();
+  },
+  //receive getter
+  computed:{
+    ...mapGetters(['loading','repos']),
+    // repos(){
+    //   return this.$store.getters.repos;
+    // },
+    // loading(){
+    //   return this.$store.getters.loading;
+    // },
+  },
+  methods:{
+    onTermChange:function (searchTerm){
+      console.log(searchTerm);
+    },
+    handleGetRepositories(){
+      //react store and get the action
+      this.$store.dispatch('getRepos')
+    },
+    onRepoSelect:function (repo){
+      this.selectedRepo = repo;
+      console.log(repo);//repo passed from repolist,repoitem
+    }
+  },
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+@import "assets/main.css";
 </style>
