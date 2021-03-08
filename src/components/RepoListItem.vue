@@ -1,8 +1,8 @@
 <template>
   <div class="aside">
-<li class="list-group-item" @click="onRepoSelect">
-  {{repo.nameWithOwner}}
-</li>
+      <li class="list-group-item" @click="onRepoSelect">
+         {{repo.nameWithOwner}}
+      </li>
   </div>
 </template>
 

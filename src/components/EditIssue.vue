@@ -1,12 +1,10 @@
 <template>
-<div>
-  issues
-</div>
+
 </template>
 
 <script>
 export default {
-name: "Issues"
+  name: "EditIssue"
 }
 </script>
 

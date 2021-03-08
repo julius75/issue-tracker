@@ -15,7 +15,7 @@ Vue.config.productionTip = false;
 
 const getHeaders = () => {
   const headers = {};
-  const token = "60e8e7f765a8abb32a3a6e579d459cc93bf171f2";
+  // const token = "e1f294a74248ce70501b5561662a64f458c54882";
   if (token) {
     headers.authorization = `Bearer ${token}`;
   }

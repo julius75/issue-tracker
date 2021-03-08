@@ -5,7 +5,6 @@
    @repoSelect="onRepoSelect"
   >
   </RepoListItem>
-  {{ repos.length }}
 </ul>
 </template>
 

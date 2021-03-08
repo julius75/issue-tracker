@@ -1,21 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../components/Home.vue";
-import RepoDetails from "../components/RepoDetails.vue";
+import AddIssue from "../components/AddIssue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: "/new",
+    name: "AddIssue",
+    component: AddIssue
   },
-  {
-    path: "/repo-detail",
-    name: "RepoDetails",
-    component: RepoDetails
-  },
+
 
 ];
 
